@@ -1,0 +1,198 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@drawable/dravid"
+        />
+
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:id="@+id/Run0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="50dp"
+        android:background="#FF808080"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:onClick="RUN"/>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:id="@+id/Run1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1"
+        android:layout_alignParentBottom="true"
+
+        android:layout_toRightOf="@+id/Run0"
+        android:layout_marginBottom="50dp"
+        android:background="#FF808080"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:onClick="RUN"/>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:id="@+id/Run2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2"
+        android:layout_alignParentBottom="true"
+
+        android:layout_toRightOf="@+id/Run1"
+        android:layout_marginBottom="50dp"
+        android:background="#FF808080"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:onClick="RUN"/>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:id="@+id/Run3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3"
+        android:layout_alignParentBottom="true"
+
+        android:layout_toRightOf="@+id/Run2"
+        android:layout_marginBottom="50dp"
+        android:background="#FF808080"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:onClick="RUN"/>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:id="@+id/Run4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4"
+        android:layout_alignParentBottom="true"
+
+        android:layout_toRightOf="@+id/Run3"
+        android:layout_marginBottom="50dp"
+        android:background="#FF808080"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:onClick="RUN"/>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:id="@+id/Run5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="5"
+        android:layout_alignParentBottom="true"
+
+        android:layout_toRightOf="@+id/Run4"
+        android:layout_marginBottom="50dp"
+        android:background="#FF808080"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:onClick="RUN"/>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:id="@+id/Run6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="6"
+        android:layout_alignParentBottom="true"
+
+        android:layout_toRightOf="@+id/Run5"
+        android:layout_marginBottom="50dp"
+        android:background="#FF808080"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:onClick="RUN"/>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:id="@+id/restart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Game?"
+        android:layout_below="@+id/over"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"
+        android:onClick="restart"/>
+
+    <TextView
+        android:id="@+id/CPU"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:text="0"
+        android:background="#FF8080"
+        android:layout_centerHorizontal="true"
+        />
+
+    <TextView
+        android:id="@+id/USER"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:text="0"
+        android:background="#FF8080"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/CPU"
+        />
+
+    <TextView
+        android:id="@+id/choice"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:text="0"
+        android:background="#FF8080"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/USER"
+        />
+
+    <TextView
+        android:id="@+id/over"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:text="GAME OVER"
+        android:visibility="invisible"
+        android:background="#FF9008"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        />
+
+    <TextView
+        android:id="@+id/cs"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:text="CPU SCORE"
+        android:background="#FF8080"
+        android:layout_toLeftOf="@id/CPU"/>
+
+    <TextView
+        android:id="@+id/ys"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:text="YOUR SCORE"
+        android:background="#FF8080"
+        android:layout_below="@id/cs"
+        android:layout_toLeftOf="@id/USER"/>
+
+    <TextView
+
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:text="CPU CHOICE"
+        android:background="#FF8080"
+        android:layout_below="@id/ys"
+        android:layout_toLeftOf="@id/choice"/>
+
+
+</RelativeLayout>
+
