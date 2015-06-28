@@ -21,7 +21,7 @@ public class MyActivity extends Activity {
     TextView tv; //user scoreboard
     TextView cc; //cpu choiceboard
     TextView cs; //cpu Scoreboard
-    TextView gm; //game over textview
+    TextView gm; //game over
 
     Button r0;
     Button r1;
