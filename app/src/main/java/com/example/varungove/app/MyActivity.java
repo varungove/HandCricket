@@ -21,7 +21,7 @@ public class MyActivity extends Activity {
     TextView tv; //user scoreboard
     TextView cc; //cpu choiceboard
     TextView cs; //cpu Scoreboard
-    TextView gm; //game over
+    // TextView gm; //game over
 
     Button r0;
     Button r1;
@@ -55,7 +55,7 @@ public class MyActivity extends Activity {
         tv = (TextView)findViewById(R.id.USER);
         cc = (TextView)findViewById(R.id.choice);
         cs = (TextView)findViewById(R.id.CPU);
-        gm = (TextView)findViewById(R.id.over);
+        //gm = (TextView)findViewById(R.id.over);
 
         r0 = (Button) findViewById(R.id.Run0);
         r1 = (Button) findViewById(R.id.Run1);
@@ -101,6 +101,155 @@ public class MyActivity extends Activity {
 
     }
 
+    //called when the first innings is done
+    public void out(int c, int p)
+    {
+        //bflag 0 player batted first bflag 1 CPU batted first
+
+        String cp="CPU needs ";
+        int x=0;
+
+        if(bflag==0)
+        {
+            x=p+1;
+
+        }
+        else
+        {
+            x=c+1;
+            cp="You need ";
+        }
+
+        AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
+        dlgAlert.setMessage("OUT!" +"\n" + cp + x + " runs to win!");
+        dlgAlert.setPositiveButton("OK", null);
+        dlgAlert.setCancelable(true);
+        dlgAlert.create().show();
+
+        dlgAlert.setPositiveButton("Ok",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        //dismiss the dialog
+                    }
+                });
+
+    }
+
+        //called when game is done and chooses winner
+    public void winner(int c, int p)
+    {
+        //BFLAG value is 1 is CPU BATTTED SECOND and 0 if PLAYER BATTER SECOND
+
+        // PLAYER BATTED FIRST AND WON
+        if(c<p && bflag==1)
+        {
+            int ctr=p-c;
+            String alert2 = "You won by " + ctr + " runs!";
+
+
+
+            AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
+            dlgAlert.setMessage("GAME OVER!" +"\n" + alert2);
+            dlgAlert.setPositiveButton("OK", null);
+            dlgAlert.setCancelable(true);
+            dlgAlert.create().show();
+
+            dlgAlert.setPositiveButton("Ok",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            //dismiss the dialog
+                        }
+                    });
+
+
+        }
+
+        // PLAYER BATTED FIRST AND LOST
+        if(c>p && bflag==1)
+        {
+
+
+            String alert2 = "You lost!";
+
+
+
+            AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
+            dlgAlert.setMessage("GAME OVER!" +"\n" + alert2);
+            dlgAlert.setPositiveButton("OK", null);
+            dlgAlert.setCancelable(true);
+            dlgAlert.create().show();
+
+            dlgAlert.setPositiveButton("Ok",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            //dismiss the dialog
+                        }
+                    });
+        }
+
+        //PLAYER BATTED SECOND AND LOST
+        if(c>p && bflag==0)
+        {
+            int ctr=c-p;
+            String alert2 = "You lost by " + ctr + " runs!";
+
+
+
+            AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
+            dlgAlert.setMessage("GAME OVER!" +"\n" + alert2);
+            dlgAlert.setPositiveButton("OK", null);
+            dlgAlert.setCancelable(true);
+            dlgAlert.create().show();
+
+            dlgAlert.setPositiveButton("Ok",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            //dismiss the dialog
+                        }
+                    });
+
+
+        }
+
+        //PLAYER BATTED SECOND AND WON
+        if(c<p && bflag==0)
+        {
+
+            String alert2 = "You won!";
+
+
+
+            AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
+            dlgAlert.setMessage("GAME OVER!" +"\n" + alert2);
+            dlgAlert.setPositiveButton("OK", null);
+            dlgAlert.setCancelable(true);
+            dlgAlert.create().show();
+
+            dlgAlert.setPositiveButton("Ok",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            //dismiss the dialog
+                        }
+                    });
+
+        }
+
+        if(c==p)
+        {
+            AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
+            dlgAlert.setMessage("GAME OVER!" +"\n" + "DRAW!");
+            dlgAlert.setPositiveButton("OK", null);
+            dlgAlert.setCancelable(true);
+            dlgAlert.create().show();
+
+            dlgAlert.setPositiveButton("Ok",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            //dismiss the dialog
+                        }
+                    });
+        }
+    }
      //Called when the user clicks the Send button
     public void RUN(View view) {
             int x=1;
@@ -126,18 +275,7 @@ public class MyActivity extends Activity {
                         {
                             flag=1;
 
-                            AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
-                            dlgAlert.setMessage("1st Innings Done!");
-                            dlgAlert.setPositiveButton("OK", null);
-                            dlgAlert.setCancelable(true);
-                            dlgAlert.create().show();
-
-                            dlgAlert.setPositiveButton("Ok",
-                                    new DialogInterface.OnClickListener() {
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            //dismiss the dialog
-                                        }
-                                    });
+                            out(cpuscore, score);
 
                             if(bflag==0)
                                 bflag=1;
@@ -147,7 +285,7 @@ public class MyActivity extends Activity {
                             break;
                         }//1st innings done
                     else {
-                            gm.setVisibility(View.VISIBLE);
+                            //gm.setVisibility(View.VISIBLE);
                             rs.setVisibility(View.VISIBLE);
                             r0.setEnabled(false);
                             r1.setEnabled(false);
@@ -156,6 +294,7 @@ public class MyActivity extends Activity {
                             r4.setEnabled(false);
                             r5.setEnabled(false);
                             r6.setEnabled(false);
+                            winner(cpuscore, score);
 
                             break;
                         }//second innings done
@@ -168,7 +307,7 @@ public class MyActivity extends Activity {
                 if(flag==1)
                 {
                     if(bflag==0 && score>cpuscore) {
-                        gm.setVisibility(View.VISIBLE);
+                       // gm.setVisibility(View.VISIBLE);
                         rs.setVisibility(View.VISIBLE);
                         r0.setEnabled(false);
                         r1.setEnabled(false);
@@ -177,12 +316,13 @@ public class MyActivity extends Activity {
                         r4.setEnabled(false);
                         r5.setEnabled(false);
                         r6.setEnabled(false);
+                        winner(cpuscore, score);
                         break;
                     }
 
                     if(bflag==1 && cpuscore>score)
                     {
-                        gm.setVisibility(View.VISIBLE);
+                        //gm.setVisibility(View.VISIBLE);
                         rs.setVisibility(View.VISIBLE);
                         r0.setEnabled(false);
                         r1.setEnabled(false);
@@ -191,6 +331,7 @@ public class MyActivity extends Activity {
                         r4.setEnabled(false);
                         r5.setEnabled(false);
                         r6.setEnabled(false);
+                        winner(cpuscore, score);
                         break;
                     }
                 } // checking if score was chased down
@@ -204,18 +345,7 @@ public class MyActivity extends Activity {
                     {
                         flag=1;
 
-                        AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
-                        dlgAlert.setMessage("1st Innings Done!");
-                        dlgAlert.setPositiveButton("OK", null);
-                        dlgAlert.setCancelable(true);
-                        dlgAlert.create().show();
-
-                        dlgAlert.setPositiveButton("Ok",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        //dismiss the dialog
-                                    }
-                                });
+                        out(cpuscore, score);
 
                         if(bflag==0)
                             bflag=1;
@@ -226,7 +356,7 @@ public class MyActivity extends Activity {
                     }
                     else {
 
-                        gm.setVisibility(View.VISIBLE);
+                        //gm.setVisibility(View.VISIBLE);
                         rs.setVisibility(View.VISIBLE);
                         r0.setEnabled(false);
                         r1.setEnabled(false);
@@ -235,6 +365,7 @@ public class MyActivity extends Activity {
                         r4.setEnabled(false);
                         r5.setEnabled(false);
                         r6.setEnabled(false);
+                        winner(cpuscore, score);
                         break;
                     }
                 }//out case
@@ -246,7 +377,7 @@ public class MyActivity extends Activity {
                 if(flag==1)
                 {
                     if(bflag==0 && score>cpuscore) {
-                        gm.setVisibility(View.VISIBLE);
+                        //gm.setVisibility(View.VISIBLE);
                         rs.setVisibility(View.VISIBLE);
                         r0.setEnabled(false);
                         r1.setEnabled(false);
@@ -255,12 +386,13 @@ public class MyActivity extends Activity {
                         r4.setEnabled(false);
                         r5.setEnabled(false);
                         r6.setEnabled(false);
+                        winner(cpuscore, score);
                         break;
                     }
 
                     if(bflag==1 && cpuscore>score)
                     {
-                        gm.setVisibility(View.VISIBLE);
+                        //gm.setVisibility(View.VISIBLE);
                         rs.setVisibility(View.VISIBLE);
                         r0.setEnabled(false);
                         r1.setEnabled(false);
@@ -269,6 +401,7 @@ public class MyActivity extends Activity {
                         r4.setEnabled(false);
                         r5.setEnabled(false);
                         r6.setEnabled(false);
+                        winner(cpuscore, score);
                         break;
                     }
                 } // checking if score was chased down
@@ -281,18 +414,7 @@ public class MyActivity extends Activity {
                     {
                         flag=1;
 
-                        AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
-                        dlgAlert.setMessage("1st Innings Done!");
-                        dlgAlert.setPositiveButton("OK", null);
-                        dlgAlert.setCancelable(true);
-                        dlgAlert.create().show();
-
-                        dlgAlert.setPositiveButton("Ok",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        //dismiss the dialog
-                                    }
-                                });
+                        out(cpuscore, score);
 
                         if(bflag==0)
                             bflag=1;
@@ -304,7 +426,7 @@ public class MyActivity extends Activity {
                     }
                     else {
 
-                        gm.setVisibility(View.VISIBLE);
+                        //gm.setVisibility(View.VISIBLE);
                         rs.setVisibility(View.VISIBLE);
                         r0.setEnabled(false);
                         r1.setEnabled(false);
@@ -313,6 +435,7 @@ public class MyActivity extends Activity {
                         r4.setEnabled(false);
                         r5.setEnabled(false);
                         r6.setEnabled(false);
+                        winner(cpuscore, score);
                         break;
                     }
                 }//out case
@@ -324,7 +447,7 @@ public class MyActivity extends Activity {
                 if(flag==1)
                 {
                     if(bflag==0 && score>cpuscore) {
-                        gm.setVisibility(View.VISIBLE);
+                        //gm.setVisibility(View.VISIBLE);
                         rs.setVisibility(View.VISIBLE);
                         r0.setEnabled(false);
                         r1.setEnabled(false);
@@ -333,12 +456,13 @@ public class MyActivity extends Activity {
                         r4.setEnabled(false);
                         r5.setEnabled(false);
                         r6.setEnabled(false);
+                        winner(cpuscore, score);
                         break;
                     }
 
                     if(bflag==1 && cpuscore>score)
                     {
-                        gm.setVisibility(View.VISIBLE);
+                        //gm.setVisibility(View.VISIBLE);
                         rs.setVisibility(View.VISIBLE);
                         r0.setEnabled(false);
                         r1.setEnabled(false);
@@ -347,6 +471,7 @@ public class MyActivity extends Activity {
                         r4.setEnabled(false);
                         r5.setEnabled(false);
                         r6.setEnabled(false);
+                        winner(cpuscore, score);
                         break;
                     }
                 } // checking if score was chased down
@@ -359,18 +484,7 @@ public class MyActivity extends Activity {
                     {
                         flag=1;
 
-                        AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
-                        dlgAlert.setMessage("1st Innings Done!");
-                        dlgAlert.setPositiveButton("OK", null);
-                        dlgAlert.setCancelable(true);
-                        dlgAlert.create().show();
-
-                        dlgAlert.setPositiveButton("Ok",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        //dismiss the dialog
-                                    }
-                                });
+                        out(cpuscore, score);
 
                         if(bflag==0)
                             bflag=1;
@@ -382,7 +496,7 @@ public class MyActivity extends Activity {
                     }
                     else {
 
-                        gm.setVisibility(View.VISIBLE);
+                        //gm.setVisibility(View.VISIBLE);
                         rs.setVisibility(View.VISIBLE);
                         r0.setEnabled(false);
                         r1.setEnabled(false);
@@ -391,6 +505,7 @@ public class MyActivity extends Activity {
                         r4.setEnabled(false);
                         r5.setEnabled(false);
                         r6.setEnabled(false);
+                        winner(cpuscore, score);
                         break;
                     }
                 }//out case
@@ -402,7 +517,7 @@ public class MyActivity extends Activity {
                 if(flag==1)
                 {
                     if(bflag==0 && score>cpuscore) {
-                        gm.setVisibility(View.VISIBLE);
+                        //gm.setVisibility(View.VISIBLE);
                         rs.setVisibility(View.VISIBLE);
                         r0.setEnabled(false);
                         r1.setEnabled(false);
@@ -411,12 +526,13 @@ public class MyActivity extends Activity {
                         r4.setEnabled(false);
                         r5.setEnabled(false);
                         r6.setEnabled(false);
+                        winner(cpuscore, score);
                         break;
                     }
 
                     if(bflag==1 && cpuscore>score)
                     {
-                        gm.setVisibility(View.VISIBLE);
+                        //gm.setVisibility(View.VISIBLE);
                         rs.setVisibility(View.VISIBLE);
                         r0.setEnabled(false);
                         r1.setEnabled(false);
@@ -425,6 +541,7 @@ public class MyActivity extends Activity {
                         r4.setEnabled(false);
                         r5.setEnabled(false);
                         r6.setEnabled(false);
+                        winner(cpuscore, score);
                         break;
                     }
                 } // checking if score was chased down
@@ -438,18 +555,7 @@ public class MyActivity extends Activity {
                     {
                         flag=1;
 
-                        AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
-                        dlgAlert.setMessage("1st Innings Done!");
-                        dlgAlert.setPositiveButton("OK", null);
-                        dlgAlert.setCancelable(true);
-                        dlgAlert.create().show();
-
-                        dlgAlert.setPositiveButton("Ok",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        //dismiss the dialog
-                                    }
-                                });
+                        out(cpuscore, score);
 
                         if(bflag==0)
                             bflag=1;
@@ -461,7 +567,7 @@ public class MyActivity extends Activity {
                     }
                     else {
 
-                        gm.setVisibility(View.VISIBLE);
+                        //gm.setVisibility(View.VISIBLE);
                         rs.setVisibility(View.VISIBLE);
                         r0.setEnabled(false);
                         r1.setEnabled(false);
@@ -470,6 +576,7 @@ public class MyActivity extends Activity {
                         r4.setEnabled(false);
                         r5.setEnabled(false);
                         r6.setEnabled(false);
+                        winner(cpuscore, score);
                         break;
                     }
                 }//out case
@@ -481,7 +588,7 @@ public class MyActivity extends Activity {
                 if(flag==1)
                 {
                     if(bflag==0 && score>cpuscore) {
-                        gm.setVisibility(View.VISIBLE);
+                        //gm.setVisibility(View.VISIBLE);
                         rs.setVisibility(View.VISIBLE);
                         r0.setEnabled(false);
                         r1.setEnabled(false);
@@ -490,12 +597,13 @@ public class MyActivity extends Activity {
                         r4.setEnabled(false);
                         r5.setEnabled(false);
                         r6.setEnabled(false);
+                        winner(cpuscore, score);
                         break;
                     }
 
                     if(bflag==1 && cpuscore>score)
                     {
-                        gm.setVisibility(View.VISIBLE);
+                        //gm.setVisibility(View.VISIBLE);
                         rs.setVisibility(View.VISIBLE);
                         r0.setEnabled(false);
                         r1.setEnabled(false);
@@ -504,6 +612,7 @@ public class MyActivity extends Activity {
                         r4.setEnabled(false);
                         r5.setEnabled(false);
                         r6.setEnabled(false);
+                        winner(cpuscore, score);
                         break;
                     }
                 } // checking if score was chased down
@@ -519,18 +628,7 @@ public class MyActivity extends Activity {
                     {
                         flag=1;
 
-                        AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
-                        dlgAlert.setMessage("1st Innings Done!");
-                        dlgAlert.setPositiveButton("OK", null);
-                        dlgAlert.setCancelable(true);
-                        dlgAlert.create().show();
-
-                        dlgAlert.setPositiveButton("Ok",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        //dismiss the dialog
-                                    }
-                                });
+                        out(cpuscore, score);
 
                         if(bflag==0)
                             bflag=1;
@@ -542,7 +640,7 @@ public class MyActivity extends Activity {
                     }
                     else {
 
-                        gm.setVisibility(View.VISIBLE);
+                        //gm.setVisibility(View.VISIBLE);
                         rs.setVisibility(View.VISIBLE);
                         r0.setEnabled(false);
                         r1.setEnabled(false);
@@ -551,6 +649,7 @@ public class MyActivity extends Activity {
                         r4.setEnabled(false);
                         r5.setEnabled(false);
                         r6.setEnabled(false);
+                        winner(cpuscore, score);
                         break;
                     }
                 }//out case
@@ -562,7 +661,7 @@ public class MyActivity extends Activity {
                 if(flag==1)
                 {
                     if(bflag==0 && score>cpuscore) {
-                        gm.setVisibility(View.VISIBLE);
+                        //gm.setVisibility(View.VISIBLE);
                         rs.setVisibility(View.VISIBLE);
                         r0.setEnabled(false);
                         r1.setEnabled(false);
@@ -571,12 +670,13 @@ public class MyActivity extends Activity {
                         r4.setEnabled(false);
                         r5.setEnabled(false);
                         r6.setEnabled(false);
+                        winner(cpuscore, score);
                         break;
                     }
 
                     if(bflag==1 && cpuscore>score)
                     {
-                        gm.setVisibility(View.VISIBLE);
+                        //gm.setVisibility(View.VISIBLE);
                         rs.setVisibility(View.VISIBLE);
                         r0.setEnabled(false);
                         r1.setEnabled(false);
@@ -585,6 +685,7 @@ public class MyActivity extends Activity {
                         r4.setEnabled(false);
                         r5.setEnabled(false);
                         r6.setEnabled(false);
+                        winner(cpuscore, score);
                         break;
                     }
                 } // checking if score was chased down
@@ -599,18 +700,7 @@ public class MyActivity extends Activity {
                     {
                         flag=1;
 
-                        AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
-                        dlgAlert.setMessage("1st Innings Done!");
-                        dlgAlert.setPositiveButton("OK", null);
-                        dlgAlert.setCancelable(true);
-                        dlgAlert.create().show();
-
-                        dlgAlert.setPositiveButton("Ok",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        //dismiss the dialog
-                                    }
-                                });
+                        out(cpuscore, score);
 
                         if(bflag==0)
                             bflag=1;
@@ -622,7 +712,7 @@ public class MyActivity extends Activity {
                     }
                     else {
 
-                        gm.setVisibility(View.VISIBLE);
+                        //gm.setVisibility(View.VISIBLE);
                         rs.setVisibility(View.VISIBLE);
                         r0.setEnabled(false);
                         r1.setEnabled(false);
@@ -631,6 +721,7 @@ public class MyActivity extends Activity {
                         r4.setEnabled(false);
                         r5.setEnabled(false);
                         r6.setEnabled(false);
+                        winner(cpuscore, score);
                         break;
                     }
                 }//out case
@@ -642,7 +733,7 @@ public class MyActivity extends Activity {
                 if(flag==1)
                 {
                     if(bflag==0 && score>cpuscore) {
-                        gm.setVisibility(View.VISIBLE);
+                        //gm.setVisibility(View.VISIBLE);
                         rs.setVisibility(View.VISIBLE);
                         r0.setEnabled(false);
                         r1.setEnabled(false);
@@ -651,12 +742,13 @@ public class MyActivity extends Activity {
                         r4.setEnabled(false);
                         r5.setEnabled(false);
                         r6.setEnabled(false);
+                        winner(cpuscore, score);
                         break;
                     }
 
                     if(bflag==1 && cpuscore>score)
                     {
-                        gm.setVisibility(View.VISIBLE);
+                        //gm.setVisibility(View.VISIBLE);
                         rs.setVisibility(View.VISIBLE);
                         r0.setEnabled(false);
                         r1.setEnabled(false);
@@ -665,6 +757,7 @@ public class MyActivity extends Activity {
                         r4.setEnabled(false);
                         r5.setEnabled(false);
                         r6.setEnabled(false);
+                        winner(cpuscore, score);
                         break;
                     }
                 } // checking if score was chased down
