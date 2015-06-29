@@ -30,6 +30,9 @@
         <activity
             android:name=".TossActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".RulesActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

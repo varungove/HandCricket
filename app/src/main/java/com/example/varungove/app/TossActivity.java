@@ -89,6 +89,7 @@ public class TossActivity extends Activity {
                 Intent myIntent = new Intent(TossActivity.this, MyActivity.class);
                 myIntent.putExtra("bool_user_bats", user_bats);
                 startActivity(myIntent);
+                finish();
 
             }
         });
@@ -100,6 +101,7 @@ public class TossActivity extends Activity {
                 Intent myIntent = new Intent(TossActivity.this, MyActivity.class);
                 myIntent.putExtra("bool_user_bats", user_bats);
                 startActivity(myIntent);
+                finish();
             }
         });
 
@@ -109,6 +111,7 @@ public class TossActivity extends Activity {
                 Intent myIntent = new Intent(TossActivity.this, MyActivity.class);
                 myIntent.putExtra("bool_user_bats", user_bats);
                 startActivity(myIntent);
+                finish();
             }
         });
 

@@ -3,16 +3,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center_horizontal">
+    android:gravity="center_horizontal"
+    android:background="@drawable/toss">
 
     <TextView
         android:id="@+id/tossTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="@string/select_heads_tails"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:textSize="25dp"
+        android:textColor="@android:color/black"
         android:layout_marginTop="40dp"/>
 
     <RelativeLayout
@@ -33,6 +36,7 @@
             android:id="@+id/heads"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@android:color/darker_gray"
             android:text="@string/heads"/>
 
         <Button
@@ -41,6 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/coin"
             android:layout_alignBottom="@id/coin"
+            android:background="@android:color/darker_gray"
             android:text="@string/tails"/>
     </RelativeLayout>
 
@@ -56,6 +61,7 @@
             android:layout_height="wrap_content"
             android:visibility="gone"
             android:layout_marginRight="40dp"
+            android:background="@android:color/darker_gray"
             android:text="@string/Batting"/>
 
         <Button
@@ -64,6 +70,7 @@
             android:layout_height="wrap_content"
             android:text="@string/Bowling"
             android:visibility="gone"
+            android:background="@android:color/darker_gray"
             android:layout_toRightOf="@id/batting"/>
 
         <Button
@@ -73,6 +80,7 @@
             android:layout_marginRight="50dp"
             android:layout_marginLeft="50dp"
             android:visibility="gone"
+            android:background="@android:color/darker_gray"
             android:text="@string/start_match"/>
 
     </RelativeLayout>
