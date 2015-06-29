@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+    <TextView
+        android:id="@+id/tossTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/select_heads_tails"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:textSize="25dp"
+        android:layout_marginTop="40dp"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp">
+
+        <ImageView
+            android:id="@+id/coin"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:layout_marginTop="20dp"
+            android:paddingBottom="20dp"
+            android:src="@drawable/coin"
+            android:layout_toRightOf="@+id/heads"/>
+
+        <Button
+            android:id="@+id/heads"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/heads"/>
+
+        <Button
+            android:id="@+id/tails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/coin"
+            android:layout_alignBottom="@id/coin"
+            android:text="@string/tails"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+
+        <Button
+            android:id="@+id/batting"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginRight="40dp"
+            android:text="@string/Batting"/>
+
+        <Button
+            android:id="@+id/bowling"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:text="@string/Bowling"
+            android:visibility="gone"
+            android:layout_toRightOf="@id/batting"/>
+
+        <Button
+            android:id="@+id/startMatchButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="50dp"
+            android:layout_marginLeft="50dp"
+            android:visibility="gone"
+            android:text="@string/start_match"/>
+
+    </RelativeLayout>
+
+</LinearLayout>
