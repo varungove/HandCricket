@@ -50,7 +50,7 @@ public class MyActivity extends Activity {
         if(toss==true)
             bflag=0;
         else
-        bflag=1;
+            bflag=1;
 
         tv = (TextView)findViewById(R.id.USER);
         cc = (TextView)findViewById(R.id.choice);
@@ -97,7 +97,7 @@ public class MyActivity extends Activity {
         Intent myintent = new Intent(MyActivity.this, MainActivity.class);
         finish();
         startActivity(myintent);
-       // finish();
+        // finish();
 
     }
 
@@ -135,7 +135,7 @@ public class MyActivity extends Activity {
 
     }
 
-        //called when game is done and chooses winner
+    //called when game is done and chooses winner
     public void winner(int c, int p)
     {
         //BFLAG value is 1 is CPU BATTTED SECOND and 0 if PLAYER BATTER SECOND
@@ -250,11 +250,11 @@ public class MyActivity extends Activity {
                     });
         }
     }
-     //Called when the user clicks the Send button
+    //Called when the user clicks the Send button
     public void RUN(View view) {
-            int x=1;
+        int x=1;
         if(bflag==0) {
-             x = (int) (10 * (Math.random()));
+            x = (int) (10 * (Math.random()));
             if (x == 4 || x == 5)
                 x = 4;
             else if (x == 6 || x == 7)
@@ -264,50 +264,50 @@ public class MyActivity extends Activity {
         }
         else
         {
-             x= (int)(7*Math.random());
+            x= (int)(7*Math.random());
         }
 
 
         switch (view.getId()) {
             case R.id.Run0:
                 if(x==0) {
-                        if(flag==0)
-                        {
-                            flag=1;
+                    if(flag==0)
+                    {
+                        flag=1;
 
-                            out(cpuscore, score);
+                        out(cpuscore, score);
 
-                            if(bflag==0)
-                                bflag=1;
-                            else
+                        if(bflag==0)
+                            bflag=1;
+                        else
                             bflag=0;
 
-                            break;
-                        }//1st innings done
+                        break;
+                    }//1st innings done
                     else {
-                            //gm.setVisibility(View.VISIBLE);
-                            rs.setVisibility(View.VISIBLE);
-                            r0.setEnabled(false);
-                            r1.setEnabled(false);
-                            r2.setEnabled(false);
-                            r3.setEnabled(false);
-                            r4.setEnabled(false);
-                            r5.setEnabled(false);
-                            r6.setEnabled(false);
-                            winner(cpuscore, score);
+                        //gm.setVisibility(View.VISIBLE);
+                        rs.setVisibility(View.VISIBLE);
+                        r0.setEnabled(false);
+                        r1.setEnabled(false);
+                        r2.setEnabled(false);
+                        r3.setEnabled(false);
+                        r4.setEnabled(false);
+                        r5.setEnabled(false);
+                        r6.setEnabled(false);
+                        winner(cpuscore, score);
 
-                            break;
-                        }//second innings done
+                        break;
+                    }//second innings done
                 }//out case
                 if(bflag==0)
-                score = score;
+                    score = score;
                 else
-                cpuscore=cpuscore+x;
+                    cpuscore=cpuscore+x;
 
                 if(flag==1)
                 {
                     if(bflag==0 && score>cpuscore) {
-                       // gm.setVisibility(View.VISIBLE);
+                        // gm.setVisibility(View.VISIBLE);
                         rs.setVisibility(View.VISIBLE);
                         r0.setEnabled(false);
                         r1.setEnabled(false);

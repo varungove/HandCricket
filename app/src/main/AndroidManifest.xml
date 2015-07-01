@@ -27,6 +27,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.varungove.app.MainActivity" />
         </activity>
+        <activity
+            android:name=".TossActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".RulesActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
