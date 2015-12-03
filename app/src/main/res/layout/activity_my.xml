@@ -1,182 +1,252 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/stadiumjf">
 
 
-    <ImageView
-        android:layout_width="wrap_content"
+    <!-- TOP HALF-->
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scaleType="fitXY"
-        android:src="@drawable/dravid"
-        />
+        android:layout_weight="20">
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/coin" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/coin" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_toRightOf="@id/imageView1"
+            android:layout_alignBottom="@id/imageView1"
+            android:scaleType="fitXY"
+            android:src="@drawable/coin" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_toLeftOf="@id/imageView2"
+            android:layout_alignBottom="@id/imageView2"
+            android:scaleType="fitXY"
+            android:src="@drawable/coin" />
 
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:id="@+id/Run0"
-        android:layout_width="wrap_content"
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerInParent="true"
+            android:gravity="center">
+
+
+
+            <!--score card LAYOUT -->
+            <LinearLayout
+                android:id="@+id/SCO"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/layout_bg"
+                android:layout_gravity="center">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center">
+
+
+                    <TextView
+                        android:id="@+id/cs"
+                        android:layout_width="200dp"
+                        android:layout_height="35dp"
+                        android:textSize="20dp"
+                        android:text="CPU: "
+                        android:textColor="#e5e5e5"
+                        android:background="#37000000" />
+
+                    <TextView
+                        android:id="@+id/ys"
+                        android:layout_width="200dp"
+                        android:layout_height="35dp"
+                        android:textSize="20dp"
+                        android:text="YOU: "
+                        android:textColor="#e5e5e5"
+                        android:background="#37000000" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/CPU"
+                        android:layout_width="40dp"
+                        android:layout_height="35dp"
+                        android:textSize="20dp"
+                        android:text="0"
+                        android:textColor="#e5e5e5"
+                        android:background="#37000000"/>
+
+                    <TextView
+                        android:id="@+id/USER"
+                        android:layout_width="40dp"
+                        android:layout_height="35dp"
+                        android:textSize="20dp"
+                        android:text="0"
+                        android:textColor="#e5e5e5"
+                        android:background="#37000000" />
+
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:id="@+id/restart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Game?"
+            android:background="@drawable/buttons"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:visibility="invisible"
+            android:onClick="restart"/>
+    </RelativeLayout>
+
+    <!-- BOTTOM HALF-->
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="0"
-        android:layout_below="@+id/restart"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"
-        android:background="#FF808080"
-        android:onClick="RUN"/>
+        android:layout_weight="1">
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:id="@+id/Run1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="1"
-        android:layout_toLeftOf="@+id/Run2"
-        android:layout_below="@+id/Run0"
-        android:layout_marginRight="30dp"
-        android:background="#FF808080"
-        android:onClick="RUN"/>
+        <LinearLayout
+            android:id="@+id/BUTT"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            > <!--MAIN LINEAR LAYOUT FOR BUTTONS -->
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:id="@+id/Run2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="2"
-        android:layout_below="@+id/Run0"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"
-        android:background="#FF808080"
-        android:onClick="RUN"/>
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:id="@+id/Run3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="3"
-        android:layout_toRightOf="@+id/Run2"
-        android:layout_below="@+id/Run0"
-        android:layout_marginLeft="30dp"
-        android:background="#FF808080"
-        android:onClick="RUN"/>
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:id="@+id/Run4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="4"
-        android:layout_below="@+id/Run2"
-        android:layout_toLeftOf="@+id/Run5"
-        android:layout_marginRight="30dp"
-        android:background="#FF808080"
-        android:onClick="RUN"/>
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:id="@+id/Run5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="5"
-        android:layout_below="@+id/Run2"
-        android:layout_centerHorizontal="true"
-        android:background="#FF808080"
-
-        android:onClick="RUN"/>
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:id="@+id/Run6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="6"
-        android:layout_below="@+id/Run2"
-        android:layout_marginLeft="30dp"
-        android:layout_toRightOf="@+id/Run5"
-        android:background="#FF808080"
-        android:onClick="RUN"/>
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:id="@+id/restart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Game?"
-        android:layout_centerHorizontal="true"
-        android:layout_centerInParent="true"
-        android:visibility="invisible"
-        android:onClick="restart"/>
-
-    <TextView
-        android:id="@+id/CPU"
-        android:layout_width="70dp"
-        android:layout_height="40dp"
-        android:text="0"
-        android:background="#FF8080"
-        android:layout_centerHorizontal="true"
-        />
-
-    <TextView
-        android:id="@+id/USER"
-        android:layout_width="70dp"
-        android:layout_height="40dp"
-        android:text="0"
-        android:background="#FF8080"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/CPU"
-        />
-
-    <TextView
-        android:id="@+id/choice"
-        android:layout_width="70dp"
-        android:layout_height="40dp"
-        android:text="0"
-        android:background="#FF8080"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/USER"
-        />
-
-    <!-- <TextView
-        android:id="@+id/over"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:inputType="text"
-        android:text="GAME OVER"
-        android:tex
-        android:visibility="visible"
-        android:background="#FF9008"
-        android:layout_centerInParent="true"
-        android:gravity="center"
-        /> -->
-
-    <TextView
-        android:id="@+id/cs"
-        android:layout_width="120dp"
-        android:layout_height="40dp"
-        android:text="CPU SCORE"
-        android:background="#FF8080"
-        android:layout_toLeftOf="@id/CPU"/>
-
-    <TextView
-        android:id="@+id/ys"
-        android:layout_width="120dp"
-        android:layout_height="40dp"
-        android:text="YOUR SCORE"
-        android:background="#FF8080"
-        android:layout_below="@id/cs"
-        android:layout_toLeftOf="@id/USER"/>
-
-    <TextView
-
-        android:layout_width="120dp"
-        android:layout_height="40dp"
-        android:text="CPU CHOICE"
-        android:background="#FF8080"
-        android:layout_below="@id/ys"
-        android:layout_toLeftOf="@id/choice"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
 
 
 
 
-</RelativeLayout>
 
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:id="@+id/Run1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1"
+                    android:layout_gravity="start"
+                    android:layout_weight="1"
+                    android:background="@drawable/buttons"
+                    android:onClick="RUN"
+                    android:layout_marginRight="5dp"/>
+
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:id="@+id/Run2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2"
+                    android:layout_weight="1"
+                    android:background="@drawable/buttons"
+                    android:onClick="RUN"/>
+
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:id="@+id/Run3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3"
+                    android:layout_weight="1"
+                    android:background="@drawable/buttons"
+                    android:onClick="RUN"
+                    android:layout_marginLeft="5dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:id="@+id/Run4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4"
+                    android:layout_gravity="start"
+                    android:layout_weight="1"
+                    android:background="@drawable/buttons"
+                    android:onClick="RUN"
+                    android:layout_marginRight="5dp"/>
+
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:id="@+id/Run5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5"
+                    android:layout_weight="1"
+                    android:background="@drawable/buttons"
+
+                    android:onClick="RUN"/>
+
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:id="@+id/Run6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="6"
+                    android:layout_weight="1"
+                    android:background="@drawable/buttons"
+                    android:onClick="RUN"
+                    android:layout_marginLeft="5dp"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+
+
+</LinearLayout>   <!-- MAIN LAYOUT-->

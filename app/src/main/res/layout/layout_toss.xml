@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    android:background="@drawable/toss">
+    android:background="@drawable/tsbf">
 
     <TextView
         android:id="@+id/tossTitle"
@@ -36,7 +36,8 @@
             android:id="@+id/heads"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@android:color/darker_gray"
+            android:background="@drawable/buttons"
+            android:alpha="0.70"
             android:text="@string/heads"/>
 
         <Button
@@ -45,7 +46,8 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/coin"
             android:layout_alignBottom="@id/coin"
-            android:background="@android:color/darker_gray"
+            android:alpha="0.85"
+            android:background="@drawable/buttons"
             android:text="@string/tails"/>
     </RelativeLayout>
 
@@ -61,7 +63,8 @@
             android:layout_height="wrap_content"
             android:visibility="gone"
             android:layout_marginRight="40dp"
-            android:background="@android:color/darker_gray"
+            android:alpha="0.85"
+            android:background="@drawable/buttons"
             android:text="@string/Batting"/>
 
         <Button
@@ -70,7 +73,8 @@
             android:layout_height="wrap_content"
             android:text="@string/Bowling"
             android:visibility="gone"
-            android:background="@android:color/darker_gray"
+            android:alpha="0.85"
+            android:background="@drawable/buttons"
             android:layout_toRightOf="@id/batting"/>
 
         <Button
@@ -80,7 +84,8 @@
             android:layout_marginRight="50dp"
             android:layout_marginLeft="50dp"
             android:visibility="gone"
-            android:background="@android:color/darker_gray"
+            android:alpha="0.85"
+            android:background="@drawable/buttons"
             android:text="@string/start_match"/>
 
     </RelativeLayout>

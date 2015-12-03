@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.varungove.app" >
+    package="com.HC.varungove.app" >
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.SET_DEBUG_APP"/>
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:theme="@style/AppTheme"
-         >
+        android:icon="@drawable/ic_launcher"
+        android:label="Hand Cricket"
+        android:theme="@style/AppTheme">
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/app_id"/>
 
         <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name"
+            android:name="com.HC.varungove.app.FBLoginActivity"
+            android:label="Hand Cricket"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,19 +27,32 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MyActivity"
-            android:label="@string/title_activity_display_message"
-            android:parentActivityName=".MainActivity" >
+            android:name="com.HC.varungove.app.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.HC.varungove.app.MyActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName="com.HC.varungove.app.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.varungove.app.MainActivity" />
+                android:value="com.HC.varungove.app.MainActivity" />
         </activity>
         <activity
-            android:name=".TossActivity"
+            android:name="com.HC.varungove.app.TossActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.HC.varungove.app.StatsActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".RulesActivity"
+            android:name="com.HC.varungove.app.LeaderboardActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges=
+                "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:label="@string/app_name" />
     </application>
 
 </manifest>
